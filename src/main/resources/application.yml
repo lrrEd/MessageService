@@ -1,0 +1,50 @@
+spring:
+
+  mail:
+    host: smtp.163.com
+    username: lrr_nk@163.com
+    password: password
+
+
+
+
+  redis:
+    database: 0
+    host: 127.0.0.1
+    password:
+    port: 6379
+    timeout: 1000
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      auto-offset-reset: latest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: com.citicsf.msgservice.*
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/TEST
+    useSSL: false&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: password
