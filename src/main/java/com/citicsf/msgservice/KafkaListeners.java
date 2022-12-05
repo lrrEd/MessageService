@@ -1,11 +1,14 @@
 package com.citicsf.msgservice;
 
 import com.citicsf.msgservice.bean.SendParam;
+import org.apache.kafka.common.network.Send;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.annotation.RetryableTopic;
 import org.springframework.kafka.retrytopic.DltStrategy;
 import org.springframework.stereotype.Component;
+
+import java.util.concurrent.LinkedBlockingQueue;
 
 @Component
 public class KafkaListeners {
@@ -13,19 +16,16 @@ public class KafkaListeners {
     @Autowired
     private SendEmail sendEmail;
 
-    @RetryableTopic(dltStrategy = DltStrategy.FAIL_ON_ERROR)
-    @KafkaListener(
-            topics = "topic1",
-            groupId = "groupId")
-    public void listen(SendParam sendParam){
-        sendEmail.send(sendParam);
-    }
+    @Autowired
+    private LinkedBlockingQueue<SendParam> queue;
+
 
     @RetryableTopic(dltStrategy = DltStrategy.FAIL_ON_ERROR)
     @KafkaListener(
             topics = "emailTopic",
             groupId = "groupId")
-    public void listenEmail(SendParam sendParam){
-        sendEmail.send(sendParam); //接收到消息后，调用邮件发送接口
+    public void listenEmail(SendParam sendParam) throws InterruptedException {
+        //sendEmail.send(sendParam); //接收到消息后，调用邮件发送接口
+        queue.put(sendParam);
     }
 }

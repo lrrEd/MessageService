@@ -3,7 +3,7 @@ spring:
   mail:
     host: smtp.163.com
     username: lrr_nk@163.com
-    password: password
+    password: JPOUACFHJVFQCXFI
 
 
 
@@ -47,4 +47,4 @@ spring:
     url: jdbc:mysql://localhost:3306/TEST
     useSSL: false&useUnicode=true&characterEncoding=utf-8
     username: root
-    password: password
+    password: 1234qwer
