@@ -1,7 +1,6 @@
 package com.citicsf.msgservice;
 
 import com.citicsf.msgservice.bean.SendParam;
-import org.apache.kafka.common.network.Send;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.annotation.RetryableTopic;

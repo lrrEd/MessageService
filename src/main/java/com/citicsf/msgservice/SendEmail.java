@@ -3,13 +3,9 @@ package com.citicsf.msgservice;
 import com.citicsf.msgservice.bean.MessageSendLog;
 import com.citicsf.msgservice.bean.SendParam;
 import com.citicsf.msgservice.repository.MessageSendLogRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.stereotype.Component;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
