@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
@@ -14,19 +15,17 @@ import java.util.Date;
 import java.util.Map;
 
 
-@Component
+
 public class SendEmail {
 
-    @Autowired
-    private JavaMailSender javaMailSender;
+    private static JavaMailSender javaMailSender = SpringUtils.getBean(JavaMailSender.class);
 
-    @Autowired
-    private MessageSendLogRepository messageSendLogRepository;
+    private static MessageSendLogRepository messageSendLogRepository = SpringUtils.getBean("messageSendLogRepository");
 
     // define the format of timestamp
     private static final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public void send(SendParam sendParam){
+    public static void send(SendParam sendParam){
 
 
         String templateId = sendParam.getTemplateId();
@@ -77,12 +76,5 @@ public class SendEmail {
         }
 
     }
-
-
-
-
-
-
-
 
 }

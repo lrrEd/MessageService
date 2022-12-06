@@ -14,9 +14,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class KafkaListeners {
 
     @Autowired
-    private SendEmail sendEmail;
-
-    @Autowired
     private LinkedBlockingQueue<SendParam> queue;
 
 
