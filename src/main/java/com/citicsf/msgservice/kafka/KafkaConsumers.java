@@ -1,7 +1,8 @@
-package com.citicsf.msgservice;
+package com.citicsf.msgservice.kafka;
 
 
 import com.citicsf.msgservice.bean.SendParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
@@ -10,6 +11,7 @@ import javax.annotation.PostConstruct;
 import java.util.concurrent.LinkedBlockingQueue;
 
 @Component
+@Slf4j
 public class KafkaConsumers implements Runnable{
 
     @Autowired
@@ -25,7 +27,9 @@ public class KafkaConsumers implements Runnable{
 
         try {
             while(true){
-                executorService.execute(new Task(queue.take()));
+                SendParam sendParam= queue.take();
+                executorService.execute(new Task(sendParam));
+                log.info("submit message "+ sendParam.toString()+ "to thread pool");
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

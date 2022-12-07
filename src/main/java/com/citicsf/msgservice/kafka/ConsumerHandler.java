@@ -1,4 +1,4 @@
-package com.citicsf.msgservice;
+package com.citicsf.msgservice.kafka;
 
 
 import org.springframework.beans.factory.annotation.Value;

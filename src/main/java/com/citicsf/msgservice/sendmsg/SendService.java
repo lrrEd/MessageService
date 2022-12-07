@@ -1,4 +1,4 @@
-package com.citicsf.msgservice;
+package com.citicsf.msgservice.sendmsg;
 
 import com.citicsf.msgservice.bean.BatchSendParam;
 import com.citicsf.msgservice.bean.SendParam;

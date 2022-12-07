@@ -1,8 +1,9 @@
-package com.citicsf.msgservice;
+package com.citicsf.msgservice.sendmsg;
 
 import com.citicsf.msgservice.bean.BatchSendParam;
 import com.citicsf.msgservice.bean.MsgParam;
 import com.citicsf.msgservice.bean.SendParam;
+import com.citicsf.msgservice.kafka.KafkaProducer;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
