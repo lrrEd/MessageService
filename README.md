@@ -1,9 +1,9 @@
-# MessageService
+# 基于Springboot的邮件发送服务
 https://github.com/lrrEd/MessageService.git
 
 
 
-基于Springboot的邮件发送服务
+
 
 
 1. 提供邮件单个发送和批量发送接口；
